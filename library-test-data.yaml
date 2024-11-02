@@ -1,0 +1,79 @@
+books:
+  - count: 1000
+    columns:
+      id:
+        type: UUIDv4
+        args:
+          seed: 0
+      title:
+        type: string
+        args:
+          min: 5
+          max: 50
+          seed: 1
+      author:
+        type: string
+        args:
+          min: 10
+          max: 30
+          seed: 2
+      isbn:
+        type: string
+        args:
+          pattern: "###-#-##-######-#"
+          seed: 3
+      publication_year:
+        type: integer
+        args:
+          min: 1900
+          max: 2023
+          seed: 4
+      genre:
+        type: choice
+        args:
+          population:
+            - Fiction
+            - Non-fiction
+            - Science Fiction
+            - Mystery
+            - Romance
+            - Biography
+          seed: 5
+      available:
+        type: bool
+        args:
+          seed: 6
+
+members:
+  - count: 500
+    columns:
+      id:
+        type: UUIDv4
+        args:
+          seed: 7
+      name:
+        type: string
+        args:
+          min: 10
+          max: 50
+          seed: 8
+      email:
+        type: string
+        args:
+          pattern: "????##@example.com"
+          seed: 9
+      join_date:
+        type: Date
+        args:
+          start: "2020-01-01"
+          end: "2023-12-31"
+          format: '%Y-%m-%d'
+          seed: 10
+      membership_type:
+        type: choice
+        args:
+          population:
+            - STANDARD
+            - PREMIUM
+            - STUDENT
+          seed: 11
