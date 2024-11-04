@@ -87,12 +87,12 @@ members:
           pattern: "????##@example.com"
           seed: 9
 
-      # Join date between 2020-01-01 and 2023-12-31
+      # Join date between 2020-01-01 and 2024-11-03"
       join_date:
         type: Date
         args:
           start: "2020-01-01"
-          end: "2023-12-31"
+          end: "2024-11-03"
           format: '%Y-%m-%d'  # Date format specification
           seed: 10
 
