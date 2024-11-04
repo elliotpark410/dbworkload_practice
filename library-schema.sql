@@ -1,6 +1,5 @@
 CREATE DATABASE library;
 
--- Use the library database
 USE library;
 
 CREATE TABLE IF NOT EXISTS books (

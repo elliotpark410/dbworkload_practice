@@ -5,6 +5,7 @@ import random
 import string
 from datetime import datetime, timedelta
 
+# Script to generate and laod data
 def generate_random_string(min_length, max_length, seed):
     """Generate a random string of given length"""
     random.seed(seed)

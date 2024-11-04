@@ -1,4 +1,4 @@
-# Seed data structure
+# Simulate data workload 
 books:
   # Generate 1000 book records
   - count: 1000
