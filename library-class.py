@@ -9,14 +9,14 @@ class Library:
         # Convert read_pct from percentage to decimal (default 70%)
         self.read_pct: float = float(args.get("read_pct", 70) / 100)
 
-        # Set action type for books (BORROW, RETURN, or SEARCH) - use random if not specified
-        self.action: str = random.choice(["BORROW", "RETURN", "SEARCH"]) if not args.get("action", "") else args["action"]
+        # Set action type for books (BORROW, RETURN, or QUERY) - use random if not specified
+        self.action: str = random.choice(["BORROW", "RETURN", "QUERY"]) if not args.get("action", "") else args["action"]
 
         # Generate unique IDs for books and members
         self.book_id: uuid.UUID = uuid.uuid4()
         self.member_id: uuid.UUID = uuid.uuid4()
 
-        # Initialize timestamp and event type as empty 
+        # Initialize timestamp and event type as empty
         self.ts: dt.datetime = ""
         self.event: str = ""
 
@@ -29,14 +29,14 @@ class Library:
 
     def loop(self):
         # Decide which operation to perform based on read_pct
-        # If random number is less than read_pct, do a search
+        # If random number is less than read_pct, do a query
         # Otherwise, return both borrow and return operations
         if random.random() < self.read_pct:
-            return [self.search_book]
+            return [self.query_book]
         return [self.borrow_book, self.return_book]
 
-    def search_book(self, conn: psycopg.Connection):
-        # Search for a book in the database by its ID
+    def query_book(self, conn: psycopg.Connection):
+        # Query for a book in the database by its ID
         with conn.cursor() as cur:
             cur.execute(
                 "SELECT * FROM books WHERE id = %s",

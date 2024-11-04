@@ -1,33 +1,47 @@
+# Define the structure for the books table
 books:
+  # Generate 1000 book records
   - count: 1000
+    # Define the columns and their data types
     columns:
+      # Unique identifier for each book using UUID version 4
       id:
         type: UUIDv4
         args:
-          seed: 0
+          seed: 0  # Random seed for reproducible generation
+
+      # Book title field between 5-50 characters
       title:
         type: string
         args:
           min: 5
           max: 50
           seed: 1
+
+      # Author name field between 10-30 characters
       author:
         type: string
         args:
           min: 10
           max: 30
           seed: 2
+
+      # ISBN number following pattern ###-#-##-######-#
       isbn:
         type: string
         args:
           pattern: "###-#-##-######-#"
           seed: 3
+
+      # Publication year between 1900-2023
       publication_year:
         type: integer
         args:
           min: 1900
           max: 2023
           seed: 4
+
+      # Genre - randomly chosen from predefined list
       genre:
         type: choice
         args:
@@ -39,36 +53,50 @@ books:
             - Romance
             - Biography
           seed: 5
+
+      # Boolean flag indicating if book is available
       available:
         type: bool
         args:
           seed: 6
 
+ # Define the structure for the members table
 members:
+  # Generate 500 member records
   - count: 500
     columns:
+      # Unique identifier for each member using UUID version 4
       id:
         type: UUIDv4
         args:
           seed: 7
+
+      # Member name field between 10-50 characters
       name:
         type: string
         args:
           min: 10
           max: 50
           seed: 8
+
+      # Email following pattern ????##@example.com
+      # ???? will be random letters, ## will be random numbers
       email:
         type: string
         args:
           pattern: "????##@example.com"
           seed: 9
+
+      # Join date between 2020-01-01 and 2023-12-31
       join_date:
         type: Date
         args:
           start: "2020-01-01"
           end: "2023-12-31"
-          format: '%Y-%m-%d'
+          format: '%Y-%m-%d'  # Date format specification
           seed: 10
+
+      # Membership type - randomly chosen from predefined list
       membership_type:
         type: choice
         args:
