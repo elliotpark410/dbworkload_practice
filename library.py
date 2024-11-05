@@ -3,7 +3,7 @@ import psycopg
 import random
 import uuid
 
-# Workload simulator for a library management system. test
+# Workload simulator for a library management system
 class Library:
     # Initialize the Library workload
     def __init__(self, args: dict):
